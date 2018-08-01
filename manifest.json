@@ -1,0 +1,14 @@
+{
+    "manifest_version": 2,
+    "name": "Focus",
+    "version": "1.0",
+    "description": "Help me focus",
+    "content_scripts": [
+        {
+          "matches": ["https://www.youtube.com/*"],
+          "js": ["./main.js"],
+          "css": ["index.css"]
+        }
+      ],
+      "web_accessible_resources": ["images/image1.jpg"]
+  }
