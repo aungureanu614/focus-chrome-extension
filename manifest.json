@@ -5,9 +5,10 @@
     "description": "Help me focus",
     "content_scripts": [
         {
-          "matches": ["https://www.youtube.com/*", "https://www.youtube.com/*/*"],
+          "matches": ["https://www.youtube.com/*"],
           "js": ["./dist/bundle.js"],
           "css": ["index.css"]
         }
-      ]
+      ],
+      "web_accessible_resources": ["images/pic.jpeg"] //remove this after extension is done
   }

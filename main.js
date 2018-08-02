@@ -8,31 +8,42 @@ class Focus {
             applicationId: auth.applicationId,
             secret: auth.secret,
             callbackUrl: auth.callbackUrl,
-            headers: {
-                mode: 'no-cors'
-            }
         })
 
-        let response = await unsplash.photos.getRandomPhoto({})
+        let response = await unsplash.photos.getRandomPhoto({query: "inspirational"})
         return await response.json();    
     }
 
-    displayImage(randomImg) {
-        const content = document.getElementById('page-manager').children[0];
-        content.parentNode.removeChild(content);
-        const parent = document.getElementById('page-manager');
-        const sections = document.getElementById('sections');
-        sections.parentNode.removeChild(sections);
+    removeContent(content) {
+        const childContent = content.children[0];
+        childContent.parentNode.removeChild(childContent);
+    }
+
+    displayImage(randomImg,content) {
         const image = new Image();
         image.src = randomImg;
-        parent.appendChild(image);
+        image.classList.add('image-style');
+        content.appendChild(image);
+    }
+
+    addText(content) {
+        const h2 = document.createElement('h2');
+        h2.innerText = "Get back to building your dreams!";
+        h2.classList.add('beautText');
+        content.appendChild(h2);
     }
 }
 
-const fetchAndDisplayImage = async () => {
+const initExtension = async () => {
  let youtube = new Focus();
- let randomImg = await youtube.getRandomImage();
- youtube.displayImage(randomImg.urls.regular);
+ const content = document.getElementById('page-manager');
+ content.classList.add('align');
+ youtube.addText(content);
+ youtube.removeContent(content);
+// TODO uncomment below after done
+//  let randomImg = await youtube.getRandomImage();
+//  youtube.displayImage(randomImg.urls.regular);
+youtube.displayImage(chrome.extension.getURL('images/pic.jpeg'), content);
 };
 
-fetchAndDisplayImage();
+initExtension();
