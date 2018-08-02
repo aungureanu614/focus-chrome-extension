@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './main.js',
+    entry: './focus_init.js',
     output: {
         filename: 'bundle.js'
     }

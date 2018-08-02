@@ -1,17 +1,21 @@
 import auth from './auth';
 import Unsplash from 'unsplash-js';
 
-class Focus {
+export default class Focus {
 
     async getRandomImage() {
         const unsplash = new Unsplash({
             applicationId: auth.applicationId,
             secret: auth.secret,
             callbackUrl: auth.callbackUrl,
+            headers: {
+                mode: 'no-cors'
+            }
         })
 
         let response = await unsplash.photos.getRandomPhoto({query: "inspirational"})
-        return await response.json();    
+        let responseJson = await response.json(); 
+        return responseJson.urls.regular; 
     }
 
     removeContent(content) {
@@ -33,17 +37,3 @@ class Focus {
         content.appendChild(h2);
     }
 }
-
-const initExtension = async () => {
- let youtube = new Focus();
- const content = document.getElementById('page-manager');
- content.classList.add('align');
- youtube.addText(content);
- youtube.removeContent(content);
-// TODO uncomment below after done
-//  let randomImg = await youtube.getRandomImage();
-//  youtube.displayImage(randomImg.urls.regular);
-youtube.displayImage(chrome.extension.getURL('images/pic.jpeg'), content);
-};
-
-initExtension();
