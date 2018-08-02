@@ -4,11 +4,16 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --progress -p"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "unsplash-js": "^4.8.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.16.3",
+    "webpack-cli": "^3.1.0"
   }
 }

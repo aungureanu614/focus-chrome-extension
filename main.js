@@ -10,6 +10,7 @@
 // parent.appendChild(image);
 // parent.classList.add('align');
 // text.classList.add('beautText');
+import clientId from './client_id';
 
 class Focus {
     constructor() {
@@ -17,7 +18,7 @@ class Focus {
     }
 
     async getRandomImage() {
-        const url = 'https://api.unsplash.com/photos/random?client_id=871cf564f90068ebe15bd15bfd95cc0f8366474ee386c149d36bf45f89bedf19'
+        const url = `https://api.unsplash.com/photos/random?client_id=${clientId}`
     
         let response = await fetch(url);
         return await response.json();        
@@ -33,7 +34,10 @@ class Focus {
     }
 }
 
-let youtube = new Focus();
-let randomImg = youtube.getRandomImage();
-console.log(randomImg)
-youtube.displayImage(randomImg);
+const fetchAndDisplayImage = async () => {
+ let youtube = new Focus();
+ let randomImg = await youtube.getRandomImage();
+ youtube.displayImage(randomImg.urls.regular);
+};
+
+fetchAndDisplayImage();

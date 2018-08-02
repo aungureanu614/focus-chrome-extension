@@ -6,9 +6,8 @@
     "content_scripts": [
         {
           "matches": ["https://www.youtube.com/*"],
-          "js": ["./main.js"],
+          "js": ["./dist/bundle.js"],
           "css": ["index.css"]
         }
-      ],
-      "web_accessible_resources": ["images/image1.jpg"]
+      ]
   }
