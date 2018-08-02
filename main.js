@@ -28,7 +28,9 @@ class Focus {
         const content = document.getElementById('page-manager').children[0];
         content.parentNode.removeChild(content);
         const parent = document.getElementById('page-manager');
-        const image = document.createElement('img');
+        const sections = document.getElementById('sections');
+        sections.parentNode.removeChild(sections);
+        const image = new Image();
         image.src = randomImg;
         parent.appendChild(image);
     }
