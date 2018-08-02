@@ -1,27 +1,20 @@
-// const content = document.getElementById('page-manager').children[0];
-// content.parentNode.removeChild(content);
-// const parent = document.getElementById('page-manager');
-// const text = document.createElement('h2');
-// text.innerText = 'Get back to building your dreams!';
-// parent.appendChild(text);
-// const image = document.createElement('img');
-// let source = chrome.extension.getURL('images/image1.jpg');
-// image.src = source;
-// parent.appendChild(image);
-// parent.classList.add('align');
-// text.classList.add('beautText');
-import clientId from './client_id';
+import auth from './client_id';
+import Unsplash from 'unsplash-js';
 
 class Focus {
-    constructor() {
-       
-    }
 
     async getRandomImage() {
-        const url = `https://api.unsplash.com/photos/random?client_id=${clientId}`
-    
-        let response = await fetch(url);
-        return await response.json();        
+        const unsplash = new Unsplash({
+            applicationId: auth.applicationId,
+            secret: auth.secret,
+            callbackUrl: auth.callbackUrl,
+            headers: {
+                mode: 'no-cors'
+            }
+        })
+
+        let response = await unsplash.photos.getRandomPhoto({})
+        return await response.json();    
     }
 
     displayImage(randomImg) {
