@@ -1,4 +1,4 @@
-import auth from './client_id';
+import auth from './auth';
 import Unsplash from 'unsplash-js';
 
 class Focus {
