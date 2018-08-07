@@ -8,7 +8,7 @@ export default class Focus {
         childContent.parentNode.removeChild(childContent);
     }
 
-    async getRandomImage(queryType) {
+    async getRandomImage(imgTag) {
         const unsplash = new Unsplash({
             applicationId: auth.applicationId,
             secret: auth.secret,
@@ -18,9 +18,15 @@ export default class Focus {
             }
         })
 
-        let response = await unsplash.photos.getRandomPhoto({query: queryType})
+        let response = await unsplash.photos.getRandomPhoto({query: imgTag})
         let responseJson = await response.json(); 
         return responseJson.urls.regular; 
+    }
+
+    async getQuote(category) {
+        const url = `https://quotes.rest/qod?category=${category}`;
+        let response = await fetch(url);
+        return await response.json();
     }
 
     addStyleClass(className, el) {
