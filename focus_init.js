@@ -1,11 +1,11 @@
 import Focus from './main';
 
 const initExtension = async () => {
- let youtube = new Focus();
- const content = document.getElementById('page-manager');
- content.classList.add('align');
- youtube.addText(content);
- youtube.removeContent(content);
+let youtube = new Focus('page-manager');
+await youtube.getRandomImage()
+
+youtube.addText();
+ 
 // TODO uncomment below after done
 //  let randomImg = await youtube.getRandomImage();
 //  youtube.displayImage(randomImg, content);

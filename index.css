@@ -1,11 +1,16 @@
-.align {
+.content__align {
     display: flex;
     flex-direction: column;
 }
 
 .beautText {
     text-align: center;
-    color: darkgreen;
+    color: #000;
+    font-size: 20px;
+    font-family: fantasy;
+    background: linear-gradient(to right, #94BFFF 20%, #2FFABD 100%);
+    margin: 0;
+    padding: 20px;
 }
 
 .image-style {

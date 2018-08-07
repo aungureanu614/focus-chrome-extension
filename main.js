@@ -2,6 +2,11 @@ import auth from './auth';
 import Unsplash from 'unsplash-js';
 
 export default class Focus {
+    constructor(selector) {
+        this.content = document.getElementById(selector);
+        this.content.classList.add('content__align');
+        this.removeContent();
+    }
 
     async getRandomImage() {
         const unsplash = new Unsplash({
@@ -18,22 +23,22 @@ export default class Focus {
         return responseJson.urls.regular; 
     }
 
-    removeContent(content) {
-        const childContent = content.children[0];
+    removeContent() {
+        const childContent = this.content.children[0];
         childContent.parentNode.removeChild(childContent);
     }
 
-    displayImage(randomImg,content) {
+    displayImage(randomImg) {
         const image = new Image();
         image.src = randomImg;
         image.classList.add('image-style');
-        content.appendChild(image);
+        this.content.appendChild(image);
     }
 
-    addText(content) {
+    addText() {
         const h2 = document.createElement('h2');
         h2.innerText = "Get back to building your dreams!";
         h2.classList.add('beautText');
-        content.appendChild(h2);
+        this.content.appendChild(h2);
     }
 }
