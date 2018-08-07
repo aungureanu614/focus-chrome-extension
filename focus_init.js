@@ -4,7 +4,8 @@ const initExtension = async () => {
 let youtube = new Focus('page-manager');
 youtube.addStyleClass('content__align', youtube.content)
 
-const h2 = youtube.addText();
+const h2 = youtube.appendText('h2');
+h2.innerText = "Get back to building your dreams!!!!!";
 youtube.addStyleClass('beautText', h2)
 // await youtube.getRandomImage('inspirational');
 // TODO uncomment below after done

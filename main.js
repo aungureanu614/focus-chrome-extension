@@ -4,7 +4,8 @@ import Unsplash from 'unsplash-js';
 export default class Focus {
     constructor(selector) {
         this.content = document.getElementById(selector);
-        this._removeContent();
+        const childContent = this.content.children[0];
+        childContent.parentNode.removeChild(childContent);
     }
 
     async getRandomImage(queryType) {
@@ -22,11 +23,6 @@ export default class Focus {
         return responseJson.urls.regular; 
     }
 
-    _removeContent() {
-        const childContent = this.content.children[0];
-        childContent.parentNode.removeChild(childContent);
-    }
-
     addStyleClass(className, el) {
         el.classList.add(className);
     }
@@ -38,10 +34,9 @@ export default class Focus {
         return image;
     }
 
-    addText() {
-        const h2 = document.createElement('h2');
-        h2.innerText = "Get back to building your dreams!";
-        this.content.appendChild(h2);
-        return h2;
+    appendText(el) {
+        const elem = document.createElement(el);
+        this.content.appendChild(elem);
+        return elem;
     }
 }
