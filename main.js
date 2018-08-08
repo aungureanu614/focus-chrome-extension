@@ -17,14 +17,14 @@ export default class Focus {
             }
         })
 
-        let response = await unsplash.photos.getRandomPhoto({query: imgTag})
-        let responseJson = await response.json(); 
+        const response = await unsplash.photos.getRandomPhoto({query: imgTag})
+        const responseJson = await response.json(); 
         return responseJson.urls.regular; 
     }
 
     async getQuote(category) {
         const url = `https://quotes.rest/qod?category=${category}`;
-        let response = await fetch(url);
+        const response = await fetch(url);
         return await response.json();
     }
 
