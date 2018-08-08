@@ -14,8 +14,13 @@ youtube.addStyleClass('beautText', h2)
 
 // get inspirational image
 const randomImg = await youtube.getRandomImage('inspirational');
-const image = youtube.setAndDisplayImage(randomImg);
+const imageObj = new Image();
+const image = youtube.setAndDisplayImage(randomImg, imageObj);
 youtube.addStyleClass('image-style', image);
+image.addEventListener('click', async(e) => {
+    let newRandom = await youtube.getRandomImage('inspirational');
+    youtube.setAndDisplayImage(newRandom, image);
+})
 
 // clear top right controls
 const topButtons = document.getElementById('buttons');

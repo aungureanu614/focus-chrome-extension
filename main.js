@@ -36,8 +36,8 @@ export default class Focus {
         el.classList.add(className);
     }
 
-    setAndDisplayImage(randomImg) {
-        const image = new Image();
+    setAndDisplayImage(randomImg, image) {
+        // const image = new Image();
         image.src = randomImg;
         this.content.appendChild(image);
         return image;

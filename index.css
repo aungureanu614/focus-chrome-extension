@@ -18,6 +18,10 @@
     height: 100vh;
 }
 
+.image-style:hover {
+    cursor: pointer;
+}
+
 .heading--author__display {
     color: antiquewhite;
 }
