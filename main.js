@@ -7,7 +7,7 @@ export default class Focus {
     this.removeContent();
   }
 
-  static async getRandomImage(imgTag) {
+  async getRandomImage(imgTag) {
     const unsplash = new Unsplash({
       applicationId: auth.applicationId,
       secret: auth.secret,
@@ -18,25 +18,28 @@ export default class Focus {
     });
 
     const response = await unsplash.photos.getRandomPhoto({ query: imgTag });
-    const responseJson = response.json();
+    const responseJson = await response.json();
     return responseJson.urls.regular;
   }
 
-  static async getQuote(category) {
+  async getQuote(category) {
     const url = `https://quotes.rest/qod?category=${category}`;
     const response = await fetch(url);
     return response.json();
   }
 
   removeContent(el = this.content) {
-    el.innerHTML = '';
+    const element = el;
+    element.innerHTML = '';
   }
 
-  static addStyleClass(className, el) {
-    el.classList.add(className);
+  addStyleClass(className, el) {
+    const element = el;
+    element.classList.add(className);
   }
 
-  setAndDisplayImage(randomImg, image) {
+  setAndDisplayImage(randomImg, imageObj) {
+    const image = imageObj;
     image.src = randomImg;
     this.content.appendChild(image);
     return image;
