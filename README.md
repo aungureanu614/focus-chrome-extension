@@ -1,6 +1,6 @@
 # Focus (Chrome Extension)
 
-![Screenshot](https://snag.gy/qjwmJf.jpg)
+![Screenshot](https://snag.gy/F5BWP9.jpg)
 
 ## Background
 
