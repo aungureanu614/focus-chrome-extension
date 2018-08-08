@@ -37,7 +37,6 @@ export default class Focus {
     }
 
     setAndDisplayImage(randomImg, image) {
-        // const image = new Image();
         image.src = randomImg;
         this.content.appendChild(image);
         return image;
