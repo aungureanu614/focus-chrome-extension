@@ -7,7 +7,7 @@ export default class Focus {
     this.removeContent();
   }
 
-  async getRandomImage(imgTag) {
+  static async getRandomImage(imgTag) {
     const unsplash = new Unsplash({
       applicationId: auth.applicationId,
       secret: auth.secret,
@@ -22,7 +22,7 @@ export default class Focus {
     return responseJson.urls.regular;
   }
 
-  async getQuote(category) {
+  static async getQuote(category) {
     const url = `https://quotes.rest/qod?category=${category}`;
     const response = await fetch(url);
     return response.json();
@@ -32,7 +32,7 @@ export default class Focus {
     el.innerHTML = '';
   }
 
-  addStyleClass(className, el) {
+  static addStyleClass(className, el) {
     el.classList.add(className);
   }
 
