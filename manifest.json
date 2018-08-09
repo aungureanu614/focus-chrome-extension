@@ -9,6 +9,5 @@
           "js": ["./dist/bundle.js"],
           "css": ["index.css"]
         }
-      ],
-      "web_accessible_resources": ["images/pic.jpeg"] //remove this after extension is done
+      ]
   }
